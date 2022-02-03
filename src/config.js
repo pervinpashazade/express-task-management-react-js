@@ -12,6 +12,7 @@ export const storageKey = {
 export const staticDataUrls = {
   user: "user",
   company: "company",
+  task: "task",
 }
 
 export const tableConfig = {

@@ -5,6 +5,9 @@ import SignupCreateCompany from "./components/pages/CompanyCreate";
 import AdminDashboard from './components/pages/Admin/Dashboard';
 import AdminEmployeeList from './components/pages/Admin/EmployeeList';
 import AdminEmpoyeeCreate from './components/pages/Admin/EmployeeCreate';
+import AdminTaskCreate from './components/pages/Admin/TaskCreate';
+import AdminTaskList from './components/pages/Admin/TaskList';
+import AdminTaskView from './components/pages/Admin/TaskView';
 
 export const routes = {
   "PUBLIC": [
@@ -48,8 +51,16 @@ export const routes = {
       component: null,
       exact: true
     }, {
+      path: "/task/list",
+      component: AdminTaskList,
+      exact: true
+    }, {
       path: "/task/create",
-      component: null,
+      component: AdminTaskCreate,
+      exact: true
+    }, {
+      path: "/task/view/:id",
+      component: AdminTaskView,
       exact: true
     },
   ]

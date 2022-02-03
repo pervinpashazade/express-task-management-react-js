@@ -30,10 +30,10 @@ function EmployeeList() {
         sort: true,
     }, {
         dataField: 'assignedTaskIdList',
-        text: 'Assigned',
+        text: 'Assigned tasks',
         sort: true,
         formatter: (cell, row) => {
-            return cell.length;
+            return cell?.length;
         }
     }, {
         dataField: 'status',

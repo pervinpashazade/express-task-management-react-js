@@ -292,3 +292,49 @@ export const statusList = [{
     id: 0,
     name: "Deactive"
 }];
+
+export const taskPriorityList = [{
+    id: 0,
+    name: "Low",
+}, {
+    id: 1,
+    name: "Normal",
+}, {
+    id: 2,
+    name: "High",
+}, {
+    id: 3,
+    name: "Immediate",
+}];
+
+export const taskStatusList = [{
+    id: 1,
+    name: "New"
+}, {
+    id: 2,
+    name: "On hold"
+}, {
+    id: 3,
+    name: "In progress"
+}, {
+    id: 4,
+    name: "Developed"
+}, {
+    id: 5,
+    name: "Confirmed"
+}, {
+    id: 6,
+    name: "In testing"
+}, {
+    id: 7,
+    name: "Tested"
+}, {
+    id: 8,
+    name: "Test failed"
+}, {
+    id: 9,
+    name: "Rejected"
+}, {
+    id: 10,
+    name: "Confirmed"
+}];

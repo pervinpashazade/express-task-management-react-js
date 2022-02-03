@@ -72,3 +72,15 @@ a:focus {
     outline: none;
   }
 }
+
+table{
+  thead{
+    tr{
+      th{
+        &.sortable{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
