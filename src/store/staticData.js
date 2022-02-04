@@ -278,6 +278,7 @@ export const message = {
     invalid_role_id: "Role id (mock api) is invalid.",
     not_found_user_company: "User company (mock api) not found.",
     create_success: "successfully created!",
+    delete_success: "successfully deleted!",
     exist: "already exist"
 };
 

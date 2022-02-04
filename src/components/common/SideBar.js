@@ -48,15 +48,17 @@ class SideBar extends React.Component {
                 items={
                   [{
                     slug: "list", title: "All tasks"
-                  }, {
-                    slug: "user/card", title: "Created by me"
-                  }, {
-                    slug: "list", title: "Assigned to me"
-                  }, {
-                    slug: "list", title: "All open"
-                  }, {
-                    slug: "list", title: "Closed"
-                  }]
+                  },
+                    // {
+                    //   slug: "user/card", title: "Created by me"
+                    // }, {
+                    //   slug: "list", title: "Assigned to me"
+                    // }, {
+                    //   slug: "list", title: "All open"
+                    // }, {
+                    //   slug: "list", title: "Closed"
+                    // }
+                  ]
                 }
               />
 

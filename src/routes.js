@@ -8,6 +8,7 @@ import AdminEmpoyeeCreate from './components/pages/Admin/EmployeeCreate';
 import AdminTaskCreate from './components/pages/Admin/TaskCreate';
 import AdminTaskList from './components/pages/Admin/TaskList';
 import AdminTaskView from './components/pages/Admin/TaskView';
+import AdminTaskEdit from './components/pages/Admin/TaskEdit';
 
 export const routes = {
   "PUBLIC": [
@@ -61,6 +62,10 @@ export const routes = {
     }, {
       path: "/task/view/:id",
       component: AdminTaskView,
+      exact: true
+    }, {
+      path: "/task/edit/:id",
+      component: AdminTaskEdit,
       exact: true
     },
   ]

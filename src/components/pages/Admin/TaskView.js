@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import Select from 'react-select';
-import { Button, Form, Input, Label } from 'reactstrap';
-import { message, renderErrorMessage, roles, statusList, taskPriorityList, taskStatusList } from '../../../store/staticData';
-import toast from 'toasted-notes';
 import axios from 'axios';
-import { config, staticDataUrls, tableConfig } from '../../../config';
+import { taskPriorityList, taskStatusList } from '../../../store/staticData';
+import { Label } from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
+import { config, staticDataUrls, tableConfig } from '../../../config';
 
-function EmployeeCreate(props) {
+function TaskView(props) {
 
     const id = props.match.params.id;
-
-    const store = useSelector(store => store);
-
-    const history = useHistory();
 
     const [data, setData] = useState(null);
     const [userList, setUserList] = useState([]);
@@ -65,7 +55,7 @@ function EmployeeCreate(props) {
 
     useEffect(() => {
         getAssignedUserList();
-    }, [data,userList])
+    }, [data,userList]);
 
     const columns = [{
         dataField: 'id',
@@ -187,4 +177,4 @@ function EmployeeCreate(props) {
     )
 }
 
-export default EmployeeCreate;
+export default TaskView;

@@ -91,7 +91,7 @@ function EmployeeCreate(props) {
             );
             return;
         };
-        if (!selectedUsersForAssign.length) {
+        if (!selectedUsersForAssign || !selectedUsersForAssign.length) {
             toast.notify(() => (
                 <div className="alert alert-danger m-3">
                     <h5>{message.error}</h5>
