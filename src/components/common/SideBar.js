@@ -33,11 +33,11 @@ class SideBar extends React.Component {
                   <FontAwesomeIcon icon={faChartArea} className="mr-2" />Dashboard
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink exact className="nav-link" to="/company">
                   <FontAwesomeIcon icon={faBriefcase} className="mr-2" />Company
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               {
                 localStorage.getItem(storageKey.role_id) && localStorage.getItem(storageKey.role_id) === "1" &&
                 <>
