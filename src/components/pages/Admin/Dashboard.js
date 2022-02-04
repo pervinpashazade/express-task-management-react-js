@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from 'react-select';
 
 export const Dashboard = () => {
 
@@ -13,7 +12,13 @@ export const Dashboard = () => {
         </div>
       </div>
       <hr />
-      test
+      <div className="row mt-5">
+        <div className="col-12">
+          <div className="alert alert-info">
+            You can use Express Task Management software application by going to the pages from the left menu.
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
