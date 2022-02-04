@@ -60,7 +60,6 @@ function TaskView(props) {
     const columns = [{
         dataField: 'id',
         text: '#',
-        sort: true,
         formatter: (cell, row, index) => {
             return index + 1
         },

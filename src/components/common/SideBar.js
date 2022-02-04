@@ -11,9 +11,11 @@ import {
   faThList,
   faUsers,
   faEdit,
+  faBriefcase,
 } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/img/logo.png';
 import { logout } from '../../store/action';
+import { storageKey } from '../../config';
 
 class SideBar extends React.Component {
   render() {
@@ -32,35 +34,61 @@ class SideBar extends React.Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink exact className="nav-link" to="/employee/list">
-                  <FontAwesomeIcon icon={faUsers} className="mr-2" />Employees
+                <NavLink exact className="nav-link" to="/company">
+                  <FontAwesomeIcon icon={faBriefcase} className="mr-2" />Company
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink exact className="nav-link" to="/task/create">
-                  <FontAwesomeIcon icon={faEdit} className="mr-2" />Create task
-                </NavLink>
-              </NavItem>
-              <SubMenu
-                slug="task"
-                icon={faThList}
-                title="Task list"
-                items={
-                  [{
-                    slug: "list", title: "All tasks"
-                  },
-                    // {
-                    //   slug: "user/card", title: "Created by me"
-                    // }, {
-                    //   slug: "list", title: "Assigned to me"
-                    // }, {
-                    //   slug: "list", title: "All open"
-                    // }, {
-                    //   slug: "list", title: "Closed"
-                    // }
-                  ]
-                }
-              />
+              {
+                localStorage.getItem(storageKey.role_id) && localStorage.getItem(storageKey.role_id) === "1" &&
+                <>
+                  <NavItem>
+                    <NavLink exact className="nav-link" to="/employee/list">
+                      <FontAwesomeIcon icon={faUsers} className="mr-2" />Employees
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink exact className="nav-link" to="/task/create">
+                      <FontAwesomeIcon icon={faEdit} className="mr-2" />Create task
+                    </NavLink>
+                  </NavItem>
+                  <SubMenu
+                    slug="task"
+                    icon={faThList}
+                    title="Task list"
+                    items={
+                      [{
+                        slug: "list", title: "All tasks"
+                      },{
+                        slug: "all/open", title: "All open"
+                      }, {
+                        slug: "all/closed", title: "Closed"
+                      }
+                      ]
+                    }
+                  />
+                </>
+              }
+              {
+                localStorage.getItem(storageKey.role_id) && localStorage.getItem(storageKey.role_id) != "1" &&
+                <SubMenu
+                  slug="task"
+                  icon={faThList}
+                  title="Task list"
+                  items={
+                    [{
+                      slug: "list", title: "All tasks"
+                    }, {
+                      slug: "me/assigned", title: "Assigned to me"
+                    }, {
+                      slug: "all/open", title: "All open"
+                    }, {
+                      slug: "all/closed", title: "Closed"
+                    }
+                    ]
+                  }
+                />
+              }
+
 
               <NavItem>
                 <a className="nav-link c-pointer" onClick={this.props.logout}>

@@ -16,16 +16,6 @@ function TaskList() {
 
     const [taskList, setTaskList] = useState([]);
     const [selectedRow, setSelectedRow] = useState(null);
-    const [isOpenEditModal, setIsOpenEditModal] = useState(false);
-    const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-
-    const toggleEditModal = () => {
-        setIsOpenEditModal(!isOpenEditModal);
-    };
-
-    const toggleDeleteModal = () => {
-        setIsOpenDeleteModal(!isOpenDeleteModal);
-    };
 
     useEffect(() => {
         getTaskListByCompany(store.user.company?.id);
@@ -37,25 +27,6 @@ function TaskList() {
             if (res.statusText === "OK") {
                 setTaskList(res.data.filter(x => x.company_id === companyId))
             };
-        });
-    };
-
-    const deleteData = () => {
-        if (!selectedRow) return;
-
-        axios.delete(config.apiURL + staticDataUrls.task + `/${selectedRow.id}`).then(res => {
-            if (res.statusText === "OK") {
-                toaster.notify(() => (
-                    <div className="alert alert-success m-3">
-                        <h5>{message.success}</h5>
-                        <p className="mb-0">
-                            {renderErrorMessage(message.delete_success, "Selected task")}
-                        </p>
-                    </div>), { position: "top-right", duration: message.duration }
-                );
-                getTaskListByCompany(store.user.company.id);
-                toggleDeleteModal();
-            }
         });
     };
 
@@ -104,16 +75,7 @@ function TaskList() {
                 {priority?.name}
             </span>
         }
-    }, 
-    // {
-    //     dataField: 'assignedTaskIdList',
-    //     text: 'Assigned',
-    //     sort: true,
-    //     formatter: (cell, row) => {
-    //         return cell?.length;
-    //     }
-    // },
-     {
+    }, {
         dataField: 'end_date',
         text: 'Deadline',
         sort: true,
@@ -143,21 +105,6 @@ function TaskList() {
                                 <FontAwesomeIcon icon={faEye} className="mr-2" />
                                 Details
                             </DropdownItem>
-                            <DropdownItem
-                                tag={Link} to={`/task/edit/${row.id}`}
-                            >
-                                <FontAwesomeIcon icon={faPen} className="mr-2" />
-                                Edit
-                            </DropdownItem>
-                            <DropdownItem
-                                onClick={() => {
-                                    setSelectedRow(row);
-                                    toggleDeleteModal();
-                                }}
-                            >
-                                <FontAwesomeIcon icon={faTrashAlt} className="mr-2" />
-                                Delete
-                            </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </div>
@@ -172,13 +119,6 @@ function TaskList() {
                     <div className="col-md-12">
                         <div className="page-header">
                             <h1 className="font-weight-bold">Task list</h1>
-                            <Link
-                                to={'/task/create'}
-                                className='btn btn-warning font-weight-bold'
-                            >
-                                <FontAwesomeIcon icon={faPlus} className='mr-2' />
-                                Add new
-                            </Link>
                         </div>
                     </div>
                 </div>
@@ -195,46 +135,6 @@ function TaskList() {
                     />
                 </div>
             </div>
-            {/* delete modal */}
-            <Modal
-                size="sm"
-                centered
-                isOpen={isOpenDeleteModal}
-            >
-                <ModalHeader toggle={toggleDeleteModal}></ModalHeader>
-                {
-                    selectedRow ?
-                        <>
-                            <ModalBody>
-                                <div className="row pt-2">
-                                    <div className="col-md-12 text-center mb-4">
-                                        <h5 className="font-weight-bold">
-                                            Are you sure you want to delete this task?
-                                        </h5>
-                                    </div>
-                                </div>
-                            </ModalBody>
-                            <ModalFooter className="justify-content-center">
-                                <Button color="danger" onClick={toggleDeleteModal}>Cancel</Button>
-                                <Button
-                                    color="success"
-                                    className="font-weight-bold"
-                                    onClick={deleteData}
-                                >
-                                    Delete
-                                </Button>
-                            </ModalFooter>
-                        </>
-                        :
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="alert alert-warning">
-                                    Məlumat tapılmadı
-                                </div>
-                            </div>
-                        </div>
-                }
-            </Modal>
         </>
     )
 }

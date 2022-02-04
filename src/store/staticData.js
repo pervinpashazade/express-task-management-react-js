@@ -272,7 +272,7 @@ export const message = {
     error: "Oops, error!",
     warning: "Het, warning!",
     required: "field is required",
-    user_not_found: "Email or password is invalid",
+    user_not_found: "Username or password is invalid",
     access_denied_login: "Your access is denied to sign in",
     invalid_confirm_password: "Confirm password is invalid",
     invalid_role_id: "Role id (mock api) is invalid.",

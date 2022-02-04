@@ -10,6 +10,11 @@ import AdminTaskList from './components/pages/Admin/TaskList';
 import AdminTaskView from './components/pages/Admin/TaskView';
 import AdminTaskEdit from './components/pages/Admin/TaskEdit';
 
+import OperatorDashboard from './components/pages/Operator/Dashboard';
+import OperatorTaskList from './components/pages/Operator/TaskList';
+import OperatorTaskView from './components/pages/Operator/TaskView';
+import OperatorTaskListOwn from './components/pages/Operator/TaskListOwn';
+
 export const routes = {
   "PUBLIC": [
     {
@@ -66,6 +71,25 @@ export const routes = {
     }, {
       path: "/task/edit/:id",
       component: AdminTaskEdit,
+      exact: true
+    },
+  ],
+  "Operator": [
+    {
+      path: "/",
+      component: OperatorDashboard,
+      exact: true
+    }, {
+      path: "/task/list",
+      component: OperatorTaskList,
+      exact: true
+    }, {
+      path: "/task/view/:id",
+      component: OperatorTaskView,
+      exact: true
+    }, {
+      path: "/task/me/assigned",
+      component: OperatorTaskListOwn,
       exact: true
     },
   ]
